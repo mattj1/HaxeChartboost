@@ -5,7 +5,7 @@
   <include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 
   <set name="mobile" value="1" if="iphone"/>
-  
+
   <files id="common">
     <compilerflag value="-Iinclude"/>
     <file name="common/ExternalInterface.cpp"/>
@@ -29,11 +29,19 @@
 
   <set name="name_prefix" value="lib" if="iphone" />
 
-  <target id="NDLL" output="${name_prefix}Chartboost${name_extra}" tool="linker" toolid="${ndll-tool}">
+<!-- REFERENCE: https://github.com/deltaluca/Haxe-NME--fork-/blob/master/project/Build.xml -->
+  <target id="NDLL" output="${name_prefix}HaxeChartboost${name_extra}" tool="linker" toolid="${ndll-tool}">
       <outdir name="../ndll/${BINDIR}" />
       <ext value=".ndll" unless="mobile"/>
       <files id="common"/>
       <files id="iphone" if="iphone"/>
+
+ <!-- unless="no_thirdparty_extras" -->
+      <!-- <lib name="iphone/libChartboost.a" /> -->
+      <lib name="-Liphone" />
+      <lib name="-lChartboost-armv7" if="HXCPP_ARMV7"/>
+      <lib name="-lChartboost" if="iphonesim"/>
+      
       <!--<files id="android" if="android”/>-->
   </target>
 

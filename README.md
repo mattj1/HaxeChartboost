@@ -5,10 +5,24 @@ Haxelib for Chartboost
 
 ### Current status:
 
-## iOS
+#### iOS
 
 WIP. Not working yet.
 
-## Android
+#### Android
 
-Not working yet.
+Not support yet.
+
+### Roadmap
+
+IOS:
+- Init
+- start session
+- Show interstitial
+- didDismissInterstitial event
+
+Android:
+- Init
+- start session
+- Show interstitial
+- callback when user closes interstitial

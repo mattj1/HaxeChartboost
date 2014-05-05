@@ -35,4 +35,4 @@ extern "C" void chartboost_main()
 }
 DEFINE_ENTRY_POINT(chartboost_main);
 
-extern "C" int chartboost_register_prims() { return 0; }
+extern "C" int HaxeChartboost_register_prims() { return 0; }
