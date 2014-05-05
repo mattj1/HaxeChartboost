@@ -7,11 +7,13 @@ Haxelib for Chartboost
 
 #### iOS
 
-WIP. Not working yet.
+WIP.
+- Can init with id/signature.
+- Can show an interstitial ad
 
 #### Android
 
-Not support yet.
+Not supported yet.
 
 ### Roadmap
 
@@ -22,6 +24,7 @@ IOS:
 - didDismissInterstitial event
 
 Android:
+- Clean up Build.xml to support Android
 - Init
 - start session
 - Show interstitial

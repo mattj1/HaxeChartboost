@@ -36,9 +36,7 @@
       <files id="common"/>
       <files id="iphone" if="iphone"/>
 
- <!-- unless="no_thirdparty_extras" -->
-      <!-- <lib name="iphone/libChartboost.a" /> -->
-      <lib name="-Liphone" />
+      <lib name="-Liphone" if="iphone"/>
       <lib name="-lChartboost-armv7" if="HXCPP_ARMV7"/>
       <lib name="-lChartboost" if="iphonesim"/>
       
