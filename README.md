@@ -1,0 +1,4 @@
+HaxeChartboost
+==============
+
+Haxelib for Chartboost
