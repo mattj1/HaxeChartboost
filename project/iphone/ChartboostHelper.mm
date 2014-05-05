@@ -40,7 +40,10 @@ extern "C"
 
 	void Chartboost_showInterstitial()
 	{
-		[chartboostHelper.chartboost showInterstitial];
+		if(chartboostHelper != nil)
+		{
+			[chartboostHelper.chartboost showInterstitial];
+		}
 	}
 
 }

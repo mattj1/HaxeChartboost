@@ -4,6 +4,8 @@
 
   <include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 
+  <set name="mobile" value="1" if="iphone"/>
+  
   <files id="common">
     <compilerflag value="-Iinclude"/>
     <file name="common/ExternalInterface.cpp"/>
