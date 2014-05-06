@@ -3,11 +3,10 @@ HaxeChartboost
 
 Haxelib for Chartboost
 
-### How to use (iOS)
+#### How to use (iOS)
 
 ```
 import chartboost.Chartboost;
-import chartboost.ChartboostEvent;
 
 ...
 	
@@ -16,12 +15,25 @@ import chartboost.ChartboostEvent;
 
 	// Show an ad
 	Chartboost.getInstance().showInterstitial();
+
+	// Call startSession whenever the app comes back into focus
+	//  (HaxePunk Example)
+
+	override public function focusGained()
+	{
+		Chartboost.getInstance().startSession();
+	}
+
 	
 ```
 
-### Capturing events
+#### Capturing events
 
 ```
+import chartboost.ChartboostEvent;
+
+...
+
 	function adWasClosed()
 	{
 		trace("User closed the ad.")
@@ -32,25 +44,26 @@ import chartboost.ChartboostEvent;
 
 ```
 
-### Current status:
+#### Current status:
 
-#### iOS
+##### iOS
 
 WIP.
 - Can init with id/signature.
 - Can show an interstitial ad
+- Dispatches event when interstitial is cloed
 
 #### Android
 
 Not supported yet.
 
-### Roadmap
+#### Roadmap
 
 IOS:
-- Init
-- start session
-- Show interstitial
-- didDismissInterstitial event
+- [DONE] Init
+- [DONE] Start session
+- [DONE] Show interstitial
+- [DONE] didDismissInterstitial event
 
 Android:
 - Clean up Build.xml to support Android
