@@ -44,7 +44,9 @@ DEFINE_PRIM (chartboost_init, 2);
 
 static value chartboost_show_interstitial() 
 {
+	#ifdef IPHONE
 	Chartboost_showInterstitial();
+	#endif
 
 	return alloc_null();
 }
@@ -52,7 +54,10 @@ DEFINE_PRIM (chartboost_show_interstitial, 0);
 
 static value chartboost_start_session()
 {
+	#ifdef IPHONE
 	Chartboost_startSession();
+	#endif
+	
 	return alloc_null();
 }
 DEFINE_PRIM (chartboost_start_session, 0);

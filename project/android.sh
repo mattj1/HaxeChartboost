@@ -1,2 +1,2 @@
 #!/bin/sh
-haxelib run hxcpp Build.xml -Dandroid -clean
+haxelib run hxcpp Build.xml -Dandroid

@@ -5,6 +5,9 @@
   <include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 
   <set name="mobile" value="1" if="iphone"/>
+  <set name="mobile" value="1" if="android"/>
+  <set name="mobile" value="1" if="blackberry"/>
+  <set name="mobile" value="1" if="webos"/>
 
   <files id="common">
     <compilerflag value="-Iinclude"/>

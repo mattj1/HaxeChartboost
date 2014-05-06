@@ -31,7 +31,9 @@ class Chartboost extends EventDispatcher
 
 	public function init( appId : String, appSignature: String )
 	{
-		chartboost_init(appId, appSignature);
+		#if ios
+			chartboost_init(appId, appSignature);
+		#end
 	}
 
 	private function onEvent(inEvent:Dynamic)
@@ -53,7 +55,9 @@ class Chartboost extends EventDispatcher
 	/// Start the Chartboost session
 	public function startSession()
 	{
-		chartboost_start_session();
+		#if ios
+			chartboost_start_session();
+		#end
 	}
 
 	/// Cache an interstitial
@@ -71,7 +75,9 @@ class Chartboost extends EventDispatcher
 	/// Show an interstitial
 	public function showInterstitial()
 	{
-		chartboost_show_interstitial();
+		#if ios
+			chartboost_show_interstitial();
+		#end
 	}
 
 	/// Show an interstitial taking location and/or a view argument

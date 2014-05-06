@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 		
-	<ndll name="HaxeChartboost" />
+	<ndll name="HaxeChartboost" if="ios"/>
 	
+	<dependency name="HaxeChartboost" path="dependencies/android" if="android" />
+	<android extension="org.haxe.extension.chartboost.HaxeChartboost" if="android"/>
+	<!--<java path="dependencies/android" />-->
 </project>
 
