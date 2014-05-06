@@ -3,7 +3,9 @@ HaxeChartboost
 
 Haxelib for Chartboost
 
-#### How to use (iOS)
+#### How to use
+
+*Note, these instructions are for iOS only. They will be updated for accuracy when Android support is added*
 
 ```
 import chartboost.Chartboost;
