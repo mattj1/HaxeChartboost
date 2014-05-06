@@ -9,6 +9,29 @@
 
 using namespace chartboost;
 
+// Event handling ===================================================
+
+AutoGCRoot *eventHandler = 0;
+
+static value chartboost_set_event_callback(value onEvent)
+{
+	eventHandler = new AutoGCRoot(onEvent);
+	return alloc_null();
+}
+DEFINE_PRIM(chartboost_set_event_callback, 1);
+
+extern "C" void chartboost_send_event(const char* type, const char* data)
+{
+    value o = alloc_empty_object();
+    alloc_field(o,val_id("type"),alloc_string(type));
+
+    if (data != NULL) alloc_field(o,val_id("data"),alloc_string(data));
+
+    val_call1(eventHandler->get(), o);
+}
+
+// ==================================================================
+
 static value chartboost_init(value appId, value appSignature) 
 {
 	#ifdef IPHONE
@@ -26,6 +49,13 @@ static value chartboost_show_interstitial()
 	return alloc_null();
 }
 DEFINE_PRIM (chartboost_show_interstitial, 0);
+
+static value chartboost_start_session()
+{
+	Chartboost_startSession();
+	return alloc_null();
+}
+DEFINE_PRIM (chartboost_start_session, 0);
 
 // ==================================================================
 

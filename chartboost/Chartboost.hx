@@ -8,6 +8,8 @@ class Chartboost extends EventDispatcher
 {
 	private static var sharedInstance : Chartboost;
 
+	public static inline var DID_DISMISS_INTERSTITIAL:String = "DID_DISMISS_INTERSTITIAL";
+
 	public static function getInstance() : Chartboost
 	{
 		if(sharedInstance == null)
@@ -23,7 +25,7 @@ class Chartboost extends EventDispatcher
 		super();
 		
 		#if ios
-			//Chartboost_set_event_callback( onEvent );
+			chartboost_set_event_callback( onEvent );
 		#end
 	}
 
@@ -32,29 +34,38 @@ class Chartboost extends EventDispatcher
 		chartboost_init(appId, appSignature);
 	}
 
-	private function onEvent()
+	private function onEvent(inEvent:Dynamic)
 	{
-
-		dispatchEvent(new Event(""));
+		var type = Std.string (Reflect.field (inEvent, "type"));
+		var data = Std.string (Reflect.field (inEvent, "data"));
+		
+		trace("Chartboost onEvent: " + type + " " + data);
+		switch(type)
+		{
+			case "didDismissInterstitial":
+				dispatchEvent(new ChartboostEvent(DID_DISMISS_INTERSTITIAL));
+		}
+		
 	}
 
+	// Chartboost API ===============================================
 
 	/// Start the Chartboost session
 	public function startSession()
 	{
-
+		chartboost_start_session();
 	}
 
 	/// Cache an interstitial
 	public function cacheInterstitial()
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	/// Cache an interstitial taking a location argument
 	public function cacheInterstitialWithLocation( location:Int )
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	/// Show an interstitial
@@ -66,7 +77,7 @@ class Chartboost extends EventDispatcher
 	/// Show an interstitial taking location and/or a view argument
 	public function showInterstitialWithLocation( location:Int )
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	/*
@@ -86,13 +97,13 @@ class Chartboost extends EventDispatcher
 	/// Cache the More Apps page
 	public function cacheMoreApps()
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	/// Show the More Apps page
 	public function showMoreApps()
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	/// Returns the device identifier for internal testing purposes
@@ -111,14 +122,16 @@ class Chartboost extends EventDispatcher
 	/// Dismiss any Chartboost view programatically
 	public function dismissChartboostView()
 	{
-
+		throw "TODO: Not implemented";
 	}
 
 	#if ios
 	
 	private static var chartboost_init = Lib.load ("chartboost", "chartboost_init", 2);
+	private static var chartboost_start_session = Lib.load("chartboost", "chartboost_start_session", 0);
 	private static var chartboost_show_interstitial = Lib.load("chartboost", "chartboost_show_interstitial", 0);
 	
+	private static var chartboost_set_event_callback = Lib.load("chartboost", "chartboost_set_event_callback", 1);
 	#end
 	
 }
