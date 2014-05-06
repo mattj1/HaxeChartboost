@@ -1,6 +1,9 @@
 package chartboost;
 
+#if cpp
 import cpp.Lib;
+#end
+
 import flash.events.Event;
 import flash.events.EventDispatcher;
 
