@@ -1,0 +1,11 @@
+{
+	"name": "chartboost",
+	"url": "https://www.chartboost.com",
+	"license": "MIT",
+	"tags": [],
+	"description": "Chartboost in-app advertising and promotion platform.",
+	"version": "0.1.0",
+	"releasenote": "Basic iOS support",
+	"contributors": [ "mattj1" ],
+	"dependencies": {}
+}
